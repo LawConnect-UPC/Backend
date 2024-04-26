@@ -9,11 +9,28 @@ public class PersonService : IPersonService
 {
     private readonly IPersonRepository _personRepository;
     private readonly IUnitOfWork _unitOfWork;
-
+    
     public PersonService(IPersonRepository personRepository, IUnitOfWork unitOfWork)
     {
         _personRepository = personRepository;
         _unitOfWork = unitOfWork;
+    }
+    public async Task<PersonResponse> LoginAsync(string email, string password)
+    {
+        try
+        {
+            var person = await _personRepository.LoginAsync(email, password);
+            if (person.Equals(null))
+            {
+                return new PersonResponse("Invalid Credentials");
+            }
+            return new PersonResponse(person);
+        }
+        catch (Exception e)
+        {
+            return new PersonResponse("Invalid Credentials"); 
+        }
+        
     }
 
     public async Task<IEnumerable<Person>> ListAsync()

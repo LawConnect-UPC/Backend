@@ -5,6 +5,7 @@ namespace Lawyeed.API.Lawyeed.Domain.Services;
 
 public interface IPersonService
 {
+    Task<PersonResponse> LoginAsync(string email, string password);
     Task<IEnumerable<Person>> ListAsync();
     Task<PersonResponse> SaveAsync(Person person);
     Task<Person> FindByIdAsync(int id);
