@@ -12,6 +12,7 @@ public class AppDbContext : DbContext
     }
     
     public DbSet<Person> Persons { get; set; }
+    public DbSet<PersonLawyer> Lawyers { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -20,6 +21,12 @@ public class AppDbContext : DbContext
         
         //Person
         builder.Entity<Person>().ToTable("Persons");
+        
+        
+        //Relations
+        builder.Entity<Person>().HasDiscriminator(p => p.Type)
+            .HasValue<Person>("client")
+            .HasValue<PersonLawyer>("lawyer");
         
         //Person
         builder.Entity<Person>().HasKey(p => p.Id);
@@ -32,6 +39,11 @@ public class AppDbContext : DbContext
         builder.Entity<Person>().Property(p => p.UrlImage).IsRequired().HasMaxLength(100);
         builder.Entity<Person>().Property(p => p.Type).IsRequired().HasMaxLength(20);
         
+        //Person Lawyer
+        builder.Entity<PersonLawyer>().Property(l => l.Specialty).HasMaxLength(30);
+        builder.Entity<PersonLawyer>().Property(l => l.WonCases);
+        builder.Entity<PersonLawyer>().Property(l => l.TotalCases);
+        builder.Entity<PersonLawyer>().Property(l => l.LostCases);
 
         //Apply Naming Conventions
         builder.UseSnakeCaseNamingConvention();
