@@ -3,13 +3,14 @@ using Lawyeed.API.Lawyeed.Domain.Models;
 using Lawyeed.API.Lawyeed.Resources;
 
 
-namespace PersonalWorld.API.Personal.Mapping;
+namespace Lawyeed.API.Lawyeed.Mapping;
 
 public class ModelToResourceProfile : Profile
 {
     public ModelToResourceProfile()
     {
         CreateMap<Person, PersonResource>();
+        CreateMap<PersonLawyer, PersonLawyerResource>();
 
     }
 }
