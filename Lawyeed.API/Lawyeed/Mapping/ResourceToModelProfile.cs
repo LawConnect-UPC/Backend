@@ -9,7 +9,6 @@ public class ResourceToModelProfile : Profile
     public ResourceToModelProfile()
     {
         CreateMap<SavePersonResource, Person>();
-        CreateMap<SavePersonLawyerResource, PersonLawyer>();
 
     }
 }
