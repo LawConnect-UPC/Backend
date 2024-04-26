@@ -22,7 +22,7 @@ public class PersonController: ControllerBase
         _mapper = mapper;
     }
     
-
+    
     
     [HttpGet]
     public async Task<IEnumerable<PersonResource>> GetAllSync()
@@ -43,7 +43,7 @@ public class PersonController: ControllerBase
         return resource;
     }
 
-    [HttpPost]
+    [HttpPost("register")]
     public async Task<IActionResult> PostAsync([FromBody] SavePersonResource resource)
     {
         
@@ -61,7 +61,19 @@ public class PersonController: ControllerBase
 
         return Ok(personResource);
     }
-    
+    [HttpGet("login")]
+    public async Task<IActionResult> LoginAsync([FromQuery] string email, string password)
+    {
+
+        var result = await _personService.LoginAsync(email, password);
+        
+        if (!result.Success)
+            return BadRequest(result.Message);
+        
+        var resource = _mapper.Map<Person, PersonResource>(result.Resource);
+
+        return Ok(resource);
+    }
     [HttpPut]
     public async Task<IActionResult> PutAsync([FromBody] SavePersonResource resource, int id)
     {
