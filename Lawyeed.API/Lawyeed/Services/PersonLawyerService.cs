@@ -20,23 +20,7 @@ public class PersonLawyerService : IPersonLawyerService
     {
         return await _personLawyerRepository.ListAsync();
     }
-    public async Task<PersonLawyerResponse> LoginAsync(string email, string password)
-    {
-        try
-        {
-            var person = await _personLawyerRepository.LoginAsync(email, password);
-            if (person.Equals(null))
-            {
-                return new PersonLawyerResponse("Invalid Credentials");
-            }
-            return new PersonLawyerResponse(person);
-        }
-        catch (Exception e)
-        {
-            return new PersonLawyerResponse("Invalid Credentials"); 
-        }
-        
-    }
+
     public async Task<PersonLawyerResponse> SaveAsync(PersonLawyer personLawyer)
     {
         try

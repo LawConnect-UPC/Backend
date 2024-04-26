@@ -11,11 +11,6 @@ public class PersonRepository : BaseRepository, IPersonRepository
     {
     }
 
-    public async Task<Person> LoginAsync(string email, string password)
-    {
-        return await _context.Persons.Where(p => p.Email == email &&  p.Password == password).FirstOrDefaultAsync();
-    }
-
     public async Task<IEnumerable<Person>> ListAsync()
     {
         return await _context.Persons.Where(p => p.Type == "client").ToListAsync();
