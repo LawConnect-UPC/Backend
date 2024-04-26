@@ -19,21 +19,7 @@ public class PersonLawyersController : ControllerBase
         _personLawyerService = personLawyerService;
         _mapper = mapper;
     }
-    
-    [HttpGet("login")]
-    public async Task<IActionResult> LoginAsync([FromQuery] string email, string password)
-    {
 
-        var result = await _personLawyerService.LoginAsync(email, password);
-        
-        if (!result.Success)
-            return BadRequest(result.Message);
-        
-        var resource = _mapper.Map<PersonLawyer, PersonLawyerResource>(result.Resource);
-
-        return Ok(resource);
-    }
-    
     [HttpGet("{id}")]
     public async Task<IActionResult> GetLawyerById(int id)
     {
@@ -54,7 +40,7 @@ public class PersonLawyersController : ControllerBase
         return resources;
     }
 
-    [HttpPost("register")]
+    [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SavePersonLawyerResource resource)
     {
         if (!ModelState.IsValid)

@@ -6,9 +6,6 @@ namespace Lawyeed.API.Lawyeed.Domain.Services;
 
 public interface IPersonLawyerService
 {
-    Task<PersonLawyerResponse> LoginAsync(string email, string password);
-    
-    
     Task<IEnumerable<PersonLawyer>> ListAsync();
 
     Task<PersonLawyerResponse> SaveAsync(PersonLawyer personLawyer);

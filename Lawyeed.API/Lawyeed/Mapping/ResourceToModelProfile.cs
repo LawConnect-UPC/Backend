@@ -10,11 +10,6 @@ public class ResourceToModelProfile : Profile
     {
         CreateMap<SavePersonResource, Person>();
         CreateMap<SavePersonLawyerResource, PersonLawyer>();
-        CreateMap<SavePlanResource, Plan>();
-        CreateMap<SavePersonPlanResource, PersonPlan>();
-        CreateMap<SaveConsultResource, Consult>();
-        CreateMap<SaveNotificationResource, Notification>();
-        CreateMap<SaveMessageResource, Message>();
 
     }
 }

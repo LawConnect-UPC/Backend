@@ -10,11 +10,7 @@ public class PersonLawyerRepository : BaseRepository, IPersonLawyerRepository
     public PersonLawyerRepository(AppDbContext context) : base(context)
     {
     }
-    
-    public async Task<PersonLawyer> LoginAsync(string email, string password)
-    {
-        return await _context.Lawyers.Where(p => p.Email == email &&  p.Password == password).FirstOrDefaultAsync();
-    }
+
     public async Task<IEnumerable<PersonLawyer>> ListAsync()
     {
         return await _context.Lawyers.ToListAsync();

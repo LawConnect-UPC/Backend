@@ -11,13 +11,5 @@ public class Person
     public string UrlImage { get; set; }
     public string Type { get; set; }
     
-    public IList<PersonPlan> PersonPlans { get; set; } = new List<PersonPlan>();
-    
-    public IList<Consult> ConsultsClient { get; set; } = new List<Consult>();
-    public IList<Consult> ConsultsLawyer { get; set; } = new List<Consult>();
-    public IList<Notification> Notifications { get; set; } = new List<Notification>();
-    public IList<Message> Messages { get; set; } = new List<Message>();
 
-    
-    
 }

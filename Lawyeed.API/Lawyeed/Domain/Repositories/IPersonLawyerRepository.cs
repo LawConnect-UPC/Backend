@@ -5,7 +5,6 @@ namespace Lawyeed.API.Lawyeed.Domain.Repositories;
 public interface IPersonLawyerRepository
 {
     Task<IEnumerable<PersonLawyer>> ListAsync();
-    Task<PersonLawyer> LoginAsync(string email, string password);
     
     Task AddAsync(PersonLawyer personLawyer);
     
