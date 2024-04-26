@@ -28,6 +28,10 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddRouting(
     options => options.LowercaseUrls = true);
 
+// Dependency Injection Configuration
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(
     typeof(ModelToResourceProfile),
