@@ -5,6 +5,7 @@ using Lawyeed.API.Lawyeed.Persistence.Contexts;
 using Lawyeed.API.Lawyeed.Persistence.Repositories;
 using Lawyeed.API.Lawyeed.Services;
 using Microsoft.EntityFrameworkCore;
+using PersonalWorld.API.Personal.Mapping;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,12 +28,6 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddRouting(
     options => options.LowercaseUrls = true);
 
-// Dependency Injection Configuration
-builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-builder.Services.AddScoped<IPersonService, PersonService>();
-builder.Services.AddScoped<IPersonLawyerRepository, PersonLawyerRepository>();
-builder.Services.AddScoped<IPersonLawyerService, PersonLawyerService>();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAutoMapper(
     typeof(ModelToResourceProfile),
