@@ -13,7 +13,7 @@ public class PersonRepository : BaseRepository, IPersonRepository
 
     public async Task<IEnumerable<Person>> ListAsync()
     {
-        return await _context.Persons.ToListAsync();
+        return await _context.Persons.Where(p => p.Type == "client").ToListAsync();
     }
 
     public async Task AddAsync(Person person)
